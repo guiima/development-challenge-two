@@ -53,7 +53,6 @@ class PatientController {
     ]);
 
     patient.merge(data);
-
     await patient.save();
 
     return patient;
