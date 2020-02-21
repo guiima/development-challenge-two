@@ -27,7 +27,7 @@ class PatientSchema extends Schema {
         .notNullable()
         .unique();
       table
-        .string("fone")
+        .string("phone")
         .notNullable()
         .unique();
       table.timestamps();
