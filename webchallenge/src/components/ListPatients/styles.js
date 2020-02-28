@@ -7,6 +7,11 @@ export const Container = styled.div`
   table {
     border-collapse: collapse;
     width: 100%;
+    color: gray;
+  }
+
+  th {
+    color: #1b1464;
   }
 
   td,
