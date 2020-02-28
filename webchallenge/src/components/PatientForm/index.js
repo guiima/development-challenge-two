@@ -36,7 +36,7 @@ export default class PatientForm extends Component {
           </FormRow>
           <FormRow>
             <Input name="street" placeholder="Rua" />
-            <Input name="number" placeholder="Número" />
+            <Input name="number" placeholder="N°" />
             <Input name="city" placeholder="Cidade" />
             <Input name="state" placeholder="Estado" />
           </FormRow>
