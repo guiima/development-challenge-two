@@ -79,6 +79,7 @@ export const FormRowButton = styled.div`
 
   button {
     margin: 10px 0px;
+    outline: none;
   }
 `;
 
@@ -91,5 +92,15 @@ export const FormHeader = styled.div`
     color: #1b1464;
     font-weight: bold;
     font-size: 25px;
+  }
+`;
+
+export const FormErrCtrl = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  span {
+    color: #ee5253;
+    margin-left: 5px;
   }
 `;
