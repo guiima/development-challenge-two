@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   /* background: red; */
   margin-top: 50px;
+  margin-bottom: 50px;
 
   table {
     border-collapse: collapse;

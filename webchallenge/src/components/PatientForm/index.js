@@ -80,7 +80,7 @@ class PatientForm extends Component {
     this.setState({ phone: patient.phone });
   }
 
-  handleSubmit = (data, { resetForm }) => {
+  handleSubmit = data => {
     if (this.state.update) {
       const { update } = this.props;
       console.log("o id", this.props.patient.id);
@@ -90,7 +90,7 @@ class PatientForm extends Component {
     } else {
       const { add } = this.props;
       add(data);
-      resetForm();
+      this.clear();
     }
   };
 

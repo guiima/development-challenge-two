@@ -13,7 +13,7 @@ function formatDate(date) {
   const month = newDate[1];
   const day = newDate[2].split("T");
 
-  return `${year}-${month}-${day[0]}`;
+  return `${day[0]}-${month}-${year}`;
 }
 
 function* getListRequest() {
