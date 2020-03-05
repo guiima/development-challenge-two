@@ -55,7 +55,7 @@ class ListPatients extends Component {
                 <td>{patient.city}</td>
                 <td>{patient.state}</td>
                 <td>{patient.zip_code}</td>
-                <td>{patient.birth}</td>
+                <td>{patient.formatedDate}</td>
                 <td>{patient.email}</td>
                 <td>{patient.phone}</td>
                 <td>

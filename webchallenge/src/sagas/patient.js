@@ -6,9 +6,25 @@ import api from "../services/api";
 
 import patientActions from "../actions/index";
 
+function formatDate(date) {
+  const newDate = date.split("-");
+
+  const year = newDate[0];
+  const month = newDate[1];
+  const day = newDate[2].split("T");
+
+  return `${year}-${month}-${day[0]}`;
+}
+
 function* getListRequest() {
   const patients = yield call(api.get, "/patients");
-  yield put(patientActions.getAll(patients.data));
+  console.log("patients", patients.data);
+
+  const data = patients.data.map(patient => ({
+    ...patient,
+    formatedDate: formatDate(patient.birth)
+  }));
+  yield put(patientActions.getAll(data));
 }
 
 function* watchRequestGetList() {
@@ -35,7 +51,7 @@ function* watchRequestRemove() {
 
 function* getPatientRequest({ id }) {
   const response = yield call(api.get, `/patients/${id}`);
-  // console.log("responseeee", response);
+  console.log("responseeee", response);
   yield put(patientActions.loadPatient(response.data));
 }
 
