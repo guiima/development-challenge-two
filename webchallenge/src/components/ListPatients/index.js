@@ -1,23 +1,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import { MdClear, MdCreate } from "react-icons/md";
+
 import patientActions from "../../actions";
 
 import { Container } from "./styles";
 
 class ListPatients extends Component {
-  state = {
-    patient: ""
-  };
-
   componentDidMount() {
     const { getAll } = this.props;
     getAll();
   }
 
+  handleDelete = id => {
+    const { remove } = this.props;
+    remove(id);
+  };
+
+  handleEdit = id => {
+    const { get } = this.props;
+    get(id);
+  };
+
   render() {
     const { patients } = this.props;
-    const { patient } = this.state;
     return (
       <Container>
         <table>
@@ -31,6 +38,7 @@ class ListPatients extends Component {
               <th>Cidade</th>
               <th>Estado</th>
               <th>CEP</th>
+              <th>Nascimento</th>
               <th>E-mail</th>
               <th>Telefone</th>
               <th></th>
@@ -39,20 +47,28 @@ class ListPatients extends Component {
           <tbody>
             {patients.map(patient => (
               <tr key={patient.id}>
-                <th>{patient.name}</th>
-                <th>{patient.rg}</th>
-                <th>{patient.cpf}</th>
-                <th>{patient.street}</th>
-                <th>{patient.number}</th>
-                <th>{patient.city}</th>
-                <th>{patient.state}</th>
-                <th>{patient.zip_code}</th>
-                <th>{patient.email}</th>
-                <th>{patient.phone}</th>
-                <th>
-                  <button>Editar</button>
-                  <button>deletar</button>
-                </th>
+                <td>{patient.name}</td>
+                <td>{patient.rg}</td>
+                <td>{patient.cpf}</td>
+                <td>{patient.street}</td>
+                <td>{patient.number}</td>
+                <td>{patient.city}</td>
+                <td>{patient.state}</td>
+                <td>{patient.zip_code}</td>
+                <td>{patient.birth}</td>
+                <td>{patient.email}</td>
+                <td>{patient.phone}</td>
+                <td>
+                  <button id="edit" onClick={() => this.handleEdit(patient.id)}>
+                    <MdCreate />
+                  </button>
+                  <button
+                    id="delete"
+                    onClick={() => this.handleDelete(patient.id)}
+                  >
+                    <MdClear />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -67,9 +83,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  add: patient => dispatch(patientActions.add(patient)),
   getAll: () => dispatch(patientActions.requestGetAll()),
-  remove: patient => dispatch(patientActions.remove(patient))
+  remove: patient => dispatch(patientActions.remove(patient)),
+  get: patient => dispatch(patientActions.get(patient))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListPatients);

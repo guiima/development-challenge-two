@@ -13,7 +13,7 @@ export const Container = styled.div`
     padding: 10px 15px;
 
     input {
-      margin: 10px 5px;
+      margin: 0px 5px 10px 5px;
       border: 1px solid;
       border-color: #c8d6e5;
       border-radius: 5px;
@@ -23,15 +23,45 @@ export const Container = styled.div`
 
       ::placeholder {
         color: #8395a7;
+        font-size: 13px;
       }
     }
 
     input#number {
-      width: 50px;
+      width: 40px;
+    }
+
+    input#birth {
+      height: 15px;
+      width: 130px;
+    }
+
+    input#email {
+      width: 190px;
+    }
+
+    input#phone {
+      width: 190px;
     }
 
     input#state {
-      width: 96px;
+      width: 50px;
+    }
+
+    input#zip_code {
+      width: 80px;
+    }
+
+    input#city {
+      width: 125px;
+    }
+
+    label {
+      color: #1b1464;
+      font-weight: bold;
+      font-size: 13px;
+      margin-left: 10px;
+      margin-bottom: 5px;
     }
   }
 `;
@@ -59,6 +89,22 @@ export const FormRowButton = styled.div`
     :hover {
       background: #1b1464;
       color: white;
+    }
+  }
+
+  button#update {
+    border: 1px solid;
+    border-color: #0abde3;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 10px;
+    background: #0abde3;
+    color: white;
+    width: 80px;
+
+    :hover {
+      background: white;
+      color: #0abde3;
     }
   }
 

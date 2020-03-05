@@ -8,10 +8,15 @@ export const Container = styled.div`
     border-collapse: collapse;
     width: 100%;
     color: gray;
+    font-size: 14px;
   }
 
   th {
     color: #1b1464;
+  }
+
+  td {
+    color: gray;
   }
 
   td,
@@ -23,5 +28,22 @@ export const Container = styled.div`
 
   tr:nth-child(even) {
     background-color: #dddddd;
+  }
+
+  button {
+    border: none;
+    margin: 10px 0px;
+    outline: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  button#edit {
+    margin-right: 10px;
+    color: #0abde3;
+  }
+
+  button#delete {
+    color: #1b1464;
   }
 `;
