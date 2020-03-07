@@ -61,7 +61,7 @@ class PatientController {
   async destroy({ params }) {
     const patient = await Patient.findOrFail(params.id);
 
-    await patientinde.delete();
+    await patient.delete();
   }
 }
 
