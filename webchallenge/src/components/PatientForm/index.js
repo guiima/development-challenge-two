@@ -64,7 +64,6 @@ class PatientForm extends Component {
   };
 
   loadPatient(patient) {
-    console.log("pateeee", patient);
     this.setState({ update: true });
     this.setState({ id: patient.id });
     this.setState({ name: patient.name });
@@ -83,7 +82,6 @@ class PatientForm extends Component {
   handleSubmit = data => {
     if (this.state.update) {
       const { update } = this.props;
-      console.log("o id", this.props.patient.id);
       update([data, this.props.patient.id]);
       this.clear();
       this.setState({ update: false });

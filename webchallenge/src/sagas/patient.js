@@ -3,6 +3,7 @@ import ACITONS from "../constants/index";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 
 import api from "../services/api";
+import remoteApi from "../services/remoteApi";
 
 import patientActions from "../actions/index";
 
@@ -18,7 +19,6 @@ function formatDate(date) {
 
 function* getListRequest() {
   const patients = yield call(api.get, "/patients");
-  console.log("patients", patients.data);
 
   const data = patients.data.map(patient => ({
     ...patient,
@@ -33,6 +33,8 @@ function* watchRequestGetList() {
 
 function* addPatientRequest({ payload }) {
   yield call(api.post, "/patients", payload);
+  yield call(remoteApi.post, "/patients", payload);
+
   yield put(patientActions.requestGetAll());
 }
 
@@ -42,6 +44,7 @@ function* watchRequestAddPatient() {
 
 function* remove({ payload }) {
   yield call(api.delete, `/patients/${payload}`);
+  yield call(remoteApi.delete, `/patients/${payload}`);
   yield put(patientActions.requestGetAll());
 }
 
@@ -51,7 +54,6 @@ function* watchRequestRemove() {
 
 function* getPatientRequest({ id }) {
   const response = yield call(api.get, `/patients/${id}`);
-  console.log("responseeee", response);
   yield put(patientActions.loadPatient(response.data));
 }
 
@@ -60,9 +62,8 @@ function* watchGetPatientRequest() {
 }
 
 function* updatePatient({ payload }) {
-  console.log("bruxo", payload);
-  const response = yield call(api.put, `/patients/${payload[1]}`, payload[0]);
-  console.log("daira", response.data);
+  yield call(api.put, `/patients/${payload[1]}`, payload[0]);
+  yield call(remoteApi.put, `/patients/${payload[1]}`, payload[0]);
   yield put(patientActions.requestGetAll());
 }
 

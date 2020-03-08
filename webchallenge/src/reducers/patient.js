@@ -24,7 +24,6 @@ const patientReducers = (state = INITIAL_STATE, action) => {
     case ACTIONS.PATIENT_GET_ALL:
       return { ...state, patients: payload };
     case ACTIONS.PATIENT_LOAD:
-      console.log("reducer", payload);
       return {
         ...state,
         patient: {
